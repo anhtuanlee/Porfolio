@@ -1,0 +1,37 @@
+{
+  "Home": {
+    "text_h3": "HELLO, I'M",
+    "text_name": "LE ANH TUAN",
+    "text_sub": "YOU CAN ALSO CALL ME  ",
+    "text_sub_name": "VENN",
+    "text_description": "I'm a Creative Developer ",
+    "text_sub_description": "& Front-End Developer",
+    "title_link_1": "see my projects",
+    "title_link_2": "more about me"
+  },
+  "Work": {
+    "title_section": "Work"
+  },
+  "About": {
+    "title_section": "About",
+    "title_description": "Hello, I'm Anh Tuan, also known as Venn.",
+    "title_description_sub_1": "My programming journey begins in 2022.",
+    "title_description_sub_2": "Having experienced many difficulties in the process of self-study without going to school. I always push beyond my limits every day.",
+    "title_description_sub_3": " I firmly believe that improving myself every day will help me get closer to my dream. Become a senior Front-End Developer."
+  },
+  "Contact": {
+    "title_section": "Contact"
+  },
+  "Form": {
+    "label_name": "Name",
+    "label_email": "Email",
+    "label_messenger": "Messenger",
+    "placeholder_messenger": "Your Messenger",
+    "button_title": "Submit"
+  },
+  "Nav": {
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact"
+  }
+}

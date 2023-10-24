@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body {
+  font-size: calc(0.75em + 0.75vw);
+  letter-spacing: -0.015rem;
+  -webkit-font-smoothing: antialiased;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+span {
+  line-height: initial;
+}
+a {
+  font-size: 1rem;
+  text-decoration: none;
+  font-variation-settings:
+    'wght' 500,
+    'wdth' 100;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-variation-settings:
+    'wght' 800,
+    'wdth' 125;
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1rem;
+  font-variation-settings:
+    'wght' 500,
+    'wdth' 100;
+}
+
+@layer utilities {
+  .font-custom {
+    @apply font-studiofeixen;
+    font-variation-settings: 'wdth' 125;
+  }
+
+  .font-reset {
+    font-family: studiofeixen, Arial, Helvetica, sans-serif;
+    font-variation-settings:
+      'wght' 800,
+      'wdth' 100;
+  }
+
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    .text-stroke {
+      @apply font-roboto;
+      font-family: Arial, Helvetica, sans-serif !important;
+      -webkit-text-stroke: 1.25px #aab2d1;
+      color: transparent;
+      font-weight: 700;
+    }
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: 'studiofeixen';
+    src: url('/access/font/studio-feixen-sans-variable.woff2');
+  }
+
+  .btn {
+    @apply w-full rounded p-3 font-bold;
+  }
+
+  .btn-border {
+    @apply rounded border border-borderPrimary bg-transparent font-semibold text-white hover:border-transparent hover:bg-borderPrimary hover:text-white;
+  }
+
+  .btn-primary {
+    @apply w-[10rem] items-center rounded bg-primary font-bold text-white hover:bg-bghover;
+  }
+
+  .btn-secondary {
+    @apply rounded-3xl bg-gradient-to-r from-scdark via-primary to-scdark bg-[length:200%] bg-no-repeat transition-all duration-200 ease-out hover:bg-[100%];
+  }
+
+  .btn-textScroll {
+    @apply fixed bottom-[5%] left-1/2 mx-auto flex h-[4rem] w-[4rem] translate-x-[-50%] items-center justify-center rounded-full bg-scdark;
+  }
+
+  .btn-disable {
+    @apply cursor-not-allowed rounded bg-primary font-bold text-white opacity-50;
+  }
+
+  .btn_dual_first {
+    @apply relative inline-flex h-11 w-[2.7rem] flex-shrink-0 items-center justify-center overflow-hidden rounded-full border-[1px] border-solid border-primary transition-all duration-1000 ease-in-out before:flex before:justify-center before:opacity-0 hover:w-[80%] hover:rounded-full hover:border-primary hover:bg-transparent hover:before:absolute hover:before:w-full hover:before:whitespace-nowrap hover:before:text-white hover:before:opacity-100 hover:before:transition-all hover:before:duration-1000 hover:before:content-['Dowload_Resume'] hover:after:content-[''];
+  }
+
+  .btn_dual_seconds {
+    @apply relative h-11 flex-shrink overflow-hidden rounded-full bg-primary leading-none text-white before:absolute before:inset-0 before:flex before:items-center before:justify-center before:whitespace-nowrap before:content-['View_Portfolio'] after:transition-all after:duration-1000 hover:bg-bghover;
+  }
+
+  .link_custom {
+    @apply after:right-96 after:transition-all after:duration-500 hover:after:absolute hover:after:inset-0 hover:after:-bottom-1 after:hover:border-b-4 after:hover:border-solid;
+  }
+}

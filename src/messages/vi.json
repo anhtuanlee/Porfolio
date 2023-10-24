@@ -1,0 +1,37 @@
+{
+  "Home": {
+    "text_h3": "XIN CHÀO MÌNH LÀ",
+    "text_name": "LÊ ANH TUẤN",
+    "text_sub": "BẠN CŨNG CÓ THỂ GỌI MÌNH LÀ ",
+    "text_sub_name": "VENN",
+    "text_description": "Mình là lập trình viên Front-End",
+    "text_sub_description": "",
+    "title_link_1": "xem dự án của mình",
+    "title_link_2": "thông tin của mình"
+  },
+  "Work": {
+    "title_section": "Công việc"
+  },
+  "Contact": {
+    "title_section": "Liên hệ"
+  },
+  "About": {
+    "title_section": "Thông Tin",
+    "title_description": "Xin chào, mình là Anh Tuấn, còn được gọi là Venn.",
+    "title_description_sub_1": "Hành trình lập trình của mình bắt đầu vào năm 2022.",
+    "title_description_sub_2": "Trải qua rất nhiều khó khăn trong quá trình tự học mà không đến trường.Mình luôn thúc đẩy vượt qua giới hạn bản thân mỗi ngày.",
+    "title_description_sub_3": "Mình tin chắc rằng việc tốt lên mỗi ngày sẽ giúp mình đến gần hơn với giấc mơ. Trở thành 1 senior Front-End Developer..."
+  },
+  "Form": {
+    "label_name": "Tên",
+    "label_email": "E-mail",
+    "label_messenger": "Tin nhắn",
+    "placeholder_messenger": "Người gửi",
+    "button_title": "Nộp"
+  },
+  "Nav": {
+    "work": "Công việc",
+    "about": "Thông Tin",
+    "contact": "Liên hệ"
+  }
+}
