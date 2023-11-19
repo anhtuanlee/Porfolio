@@ -28,12 +28,12 @@ export default function Form() {
             </span>
             <form
               method="POST"
-              action="https://formsubmit.co/83c228939739246c03493c077636fccf"
+              action="https://formsubmit.co/anhtuan.devfe@gmail.com"
             >
               <div className="mb-4">
                 <label
                   htmlFor="username"
-                  className="mb-2 block text-sm font-bold text-white"
+                  className="mb-2 block font-bold text-white"
                 >
                   <span className="text-white">&nbsp;*</span>
                   {t('label_name')}
@@ -58,7 +58,7 @@ export default function Form() {
               <div className="mb-4">
                 <label
                   htmlFor="email"
-                  className="mb-2 block text-sm font-bold text-white"
+                  className="mb-2 block font-bold text-white"
                 >
                   <span className="text-white">&nbsp;*</span>
                   {t('label_email')}
@@ -83,7 +83,7 @@ export default function Form() {
               <div className="mb-4">
                 <label
                   htmlFor="messenger"
-                  className="mb-2 block text-sm font-bold text-white"
+                  className="mb-2 block font-bold text-white"
                 >
                   <span className="text-white">&nbsp;*</span>
                   {t('label_messenger')}

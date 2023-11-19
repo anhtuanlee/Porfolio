@@ -1,0 +1,64 @@
+span {
+  line-height: initial;
+  font-size: rem(20px);
+  @include min-tablet {
+    font-size: rem(24px);
+  }
+}
+p {
+  font-variation-settings:
+    'wght' 500,
+    'wdth' 100;
+  font-size: rem(20px);
+  @include min-tablet {
+    font-size: rem(24px);
+  }
+}
+a {
+  font-size: rem(20px);
+  text-decoration: none;
+  font-variation-settings:
+    'wght' 500,
+    'wdth' 100;
+  @include min-tablet {
+    font-size: rem(24px);
+  }
+}
+label,
+input {
+  font-size: rem(24px);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-variation-settings:
+    'wght' 800,
+    'wdth' 125;
+}
+
+h1 {
+  font-size: rem(24px);
+}
+h2 {
+  font-size: rem(84px);
+}
+h3 {
+  font-size: rem(64px);
+}
+h4 {
+  font-size: rem(48px);
+}
+h5 {
+  font-size: rem(36px);
+
+  @include min-tablet {
+    font-size: rem(48px);
+  }
+}
+h6 {
+  font-size: rem(10px);
+}

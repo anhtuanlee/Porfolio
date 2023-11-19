@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function Nav() {
   const t = useTranslations('Nav');
   return (
-    <nav className="flex flex-row gap-8 text-xl font-medium">
+    <nav className="flex flex-row gap-8  font-medium mix-blend-difference">
       <Link className="text-white" href={ROUTE_PATH.WORK}>
         {t('work')}
       </Link>

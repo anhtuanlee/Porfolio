@@ -1,43 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-html,
-body {
-  font-size: calc(0.75em + 0.75vw);
-  letter-spacing: -0.015rem;
-  -webkit-font-smoothing: antialiased;
-}
-::-webkit-scrollbar {
-  display: none;
-}
-span {
-  line-height: initial;
-}
-a {
-  font-size: 1rem;
-  text-decoration: none;
-  font-variation-settings:
-    'wght' 500,
-    'wdth' 100;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-variation-settings:
-    'wght' 800,
-    'wdth' 125;
-  font-size: 1.5rem;
-}
-
-p {
-  font-size: 1rem;
-  font-variation-settings:
-    'wght' 500,
-    'wdth' 100;
-}
 
 @layer utilities {
   .font-custom {
@@ -107,14 +70,30 @@ p {
   }
 
   .btn_dual_first {
-    @apply relative inline-flex h-11 w-[2.7rem] flex-shrink-0 items-center justify-center overflow-hidden rounded-full border-[1px] border-solid border-primary transition-all duration-1000 ease-in-out before:flex before:justify-center before:opacity-0 hover:w-[80%] hover:rounded-full hover:border-primary hover:bg-transparent hover:before:absolute hover:before:w-full hover:before:whitespace-nowrap hover:before:text-white hover:before:opacity-100 hover:before:transition-all hover:before:duration-1000 hover:before:content-['Dowload_Resume'] hover:after:content-[''];
+    @apply relative inline-flex h-[45px] w-[40px] flex-shrink-0 items-center justify-center overflow-hidden rounded-full border-[1px] border-solid border-primary transition-all duration-1000 ease-in-out before:flex before:justify-center before:opacity-0 hover:w-[80%] hover:rounded-full hover:border-primary hover:bg-transparent hover:before:absolute hover:before:w-full hover:before:whitespace-nowrap hover:before:text-white hover:before:opacity-100 hover:before:transition-all hover:before:duration-1000 hover:before:content-['Dowload_Resume'] hover:after:content-[''];
   }
 
   .btn_dual_seconds {
-    @apply relative h-11 flex-shrink overflow-hidden rounded-full bg-primary leading-none text-white before:absolute before:inset-0 before:flex before:items-center before:justify-center before:whitespace-nowrap before:content-['View_Portfolio'] after:transition-all after:duration-1000 hover:bg-bghover;
+    @apply relative right-[5px] h-[40px] flex-shrink overflow-hidden rounded-full bg-primary leading-none text-white before:absolute before:inset-0 before:flex before:items-center before:justify-center before:whitespace-nowrap before:content-['View_Portfolio'] after:transition-all after:duration-1000 hover:bg-bghover;
   }
 
   .link_custom {
     @apply after:right-96 after:transition-all after:duration-500 hover:after:absolute hover:after:inset-0 hover:after:-bottom-1 after:hover:border-b-4 after:hover:border-solid;
   }
+}
+
+body {
+  overflow-x: hidden !important;
+  overscroll-behavior: none !important;
+}
+html,
+body {
+  // font-size: calc(0.75em + 0.75vw);
+  letter-spacing: -0.015rem;
+  -webkit-font-smoothing: antialiased;
+  // cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxMCIgZmlsbD0iYmxhY2siLz48L3N2Zz4='),
+  //   auto;
+}
+::-webkit-scrollbar {
+  display: none;
 }

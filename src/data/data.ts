@@ -4,7 +4,7 @@ export const dataContact: Array<{
 }> = [
         {
             title: 'Mail',
-            links: [{ sublink: '', link: 'mailto:anhtuan.devfe@gmail.com' }],
+            links: [{ sublink: '', link: 'anhtuan.devfe@gmail.com' }],
         },
         {
             title: 'Socal Medias',
@@ -21,7 +21,7 @@ export const dataWork: IDataWorks[] = [
         title: 'Music Mp3 Clone',
         href: 'https:anhtuan-music.vercel.app',
         type: 'Web Development',
-        thumbNail: '../access/images/zing_cap.png',
+        thumbNail: '/access/images/zing_cap.png',
         listImgDetails: [
             'https://cdn.inspireuplift.com/seller/profile/1670752633_Anh-gai-xinh-Viet-Nam.jpg',
             'https://cdn.inspireuplift.com/seller/profile/1670752633_Anh-gai-xinh-Viet-Nam.jpg',
@@ -36,7 +36,7 @@ export const dataWork: IDataWorks[] = [
         title: 'Portfolio',
         href: 'https:anhtuan-portfolio.vercel.app',
         type: 'Web Development',
-        thumbNail: '../access/images/port_cap.png',
+        thumbNail: '/access/images/port_cap.png',
         listImgDetails: [
             'https://cdn.inspireuplift.com/seller/profile/1670752633_Anh-gai-xinh-Viet-Nam.jpg',
             'https://cdn.inspireuplift.com/seller/profile/1670752633_Anh-gai-xinh-Viet-Nam.jpg',

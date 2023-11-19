@@ -5,12 +5,12 @@ import ItemLink from '../../../../components/ItemLink/ItemLink';
 export default function ContactItems({ title, links }: ItemContactProps) {
   return (
     <div className="flex w-full flex-row lg:gap-10 ">
-      <h3
-        className="w-1/2 flex-shrink-0 whitespace-normal pr-[25%] text-xl uppercase sm:pr-0 md:w-1/2 md:whitespace-nowrap 
+      <h5
+        className="w-1/2 flex-shrink-0 whitespace-normal pr-[25%]  uppercase sm:pr-0 md:w-1/2 md:whitespace-nowrap 
       lg:w-auto  "
       >
         {title}
-      </h3>
+      </h5>
       <ul className="flex flex-col overflow-hidden lg:w-full">
         {links.length === 1 ? (
           <li className="inline-flex flex-row text-xs ">

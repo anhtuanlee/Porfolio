@@ -1,10 +1,12 @@
+import Header from '@/components/Header/Header';
 import '@/styles/global.scss';
+import '@/styles/index.scss';
 import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
 import { Eczar, Roboto_Serif, Work_Sans } from 'next/font/google';
 import Wrapper from '../../components/Wrapper/Wrapper';
-import Header from '@/components/Header/Header';
-import { GlobalContextProvider, useGlobalContext } from '../../context/store';
-import { NextIntlClientProvider, useLocale } from 'next-intl';
+import { GlobalContextProvider } from '../../context/store';
+import { Layout } from '@/components/Layout/Layout';
 
 //Text Hightlight Eczar
 const worksans = Work_Sans({ subsets: ['latin'], variable: '--font-worksans' });
@@ -15,13 +17,10 @@ export const metadata: Metadata = {
   title: 'Portfolio',
   description: 'Venn Portfolio',
   icons: {
-    icon: 'flat.ico',
-    apple: 'flat.ico',
+    icon: '/flat.ico',
+    apple: '/flat.ico',
   },
 };
-export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'vi' }];
-}
 
 export default async function LocaleLayout({
   children,
@@ -42,17 +41,10 @@ export default async function LocaleLayout({
         className={`${worksans.variable} ${eczar.variable} ${roboto.variable} bg-bgColor text-white`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <main
-            className={`${
-              locale === 'vi' ? 'font-roboto' : 'font-studiofeixen'
-            }`}
-          >
+          <main className={`${'font-studiofeixen'}`}>
             {
               <GlobalContextProvider>
-                <Header />
-                <div className={`mt-32`}>
-                  <Wrapper>{children}</Wrapper>
-                </div>
+                <Layout>{children}</Layout>
               </GlobalContextProvider>
             }
           </main>

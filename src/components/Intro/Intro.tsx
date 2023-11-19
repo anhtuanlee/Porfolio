@@ -86,7 +86,7 @@ export default function Intro() {
       ref={containerIntroRef}
       className="fixed inset-0 z-30  flex h-full w-full items-center justify-center bg-black"
     >
-      <h3 ref={couterRef} className={cx('text-[4.5rem]', 'couter')}></h3>
+      <h2 ref={couterRef} className={cx('couter')}></h2>
 
       <div className="fixed z-20 flex h-auto w-full items-center justify-center">
         <IntroText classNames={cx('icon__text')} ref={introTextRef} />

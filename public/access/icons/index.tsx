@@ -5,8 +5,8 @@ export const IconsLogo = forwardRef<any, any>(({}, ref) => {
 		<svg
 			version='1.0'
 			xmlns='http://www.w3.org/2000/svg'
-			width='auto'
-			height='auto'
+			width='40'
+			height='40'
 			viewBox='0 0 215.000000 206.000000'
 			preserveAspectRatio='xMidYMid meet'
 			ref={ref}
@@ -313,62 +313,3 @@ export const IntroText = forwardRef<any, any>(({ classNames }, ref) => {
 		</svg>
 	);
 });
-
-export const IconMenu = forwardRef<any, any>(
-	(
-		{
-			classParents,
-			classChild,
-			classBlockSub1,
-			classBlockSub2,
-			classBlockSub3,
-		},
-		ref
-	) => {
-		return (
-			<svg
-				xmlns='http://www.w3.org/2000/svg'
-				version='1.1'
-				xmlnsXlink='http://www.w3.org/1999/xlink'
-				width='48'
-				height='48'
-				x='0'
-				y='0'
-				viewBox='0 0 32 32'
-				xmlSpace='preserve'
-				className={classParents}
-			>
-				<g className={classChild}>
-					<path
-						fill='#fff'
-						d='M27 2h-8.59c-1.66 0-3 1.35-3 3v8.59c0 1.66 1.34 3 3 3H27c1.65 0 3-1.34 3-3V5c0-1.65-1.35-3-3-3z'
-						opacity='1'
-					></path>
-				</g>
-
-				<g>
-					<path
-						d='M10.83 4.76H5c-1.65 0-3 1.35-3 3v5.83c0 1.66 1.35 3 3 3h5.83c1.66 0 3-1.34 3-3V7.76c0-1.65-1.34-3-3-3z'
-						fill='#fff'
-						opacity='1'
-						className='classBlockSub1'
-					></path>
-
-					<path
-						d='M10.83 18.17H5c-1.65 0-3 1.34-3 3V27c0 1.65 1.35 3 3 3h5.83c1.66 0 3-1.35 3-3v-5.83c0-1.66-1.34-3-3-3z'
-						fill='#fff'
-						opacity='1'
-						className='classBlockSub2'
-					></path>
-
-					<path
-						d='M24.24 18.17h-5.83c-1.66 0-3 1.34-3 3V27c0 1.65 1.34 3 3 3h5.83c1.65 0 3-1.35 3-3v-5.83c0-1.66-1.35-3-3-3z'
-						fill='#fff'
-						opacity='1'
-						className='classBlockSub3'
-					></path>
-				</g>
-			</svg>
-		);
-	}
-);

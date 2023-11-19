@@ -33,7 +33,7 @@ export default function ItemSelects({
         onMouseLeave={handleLeave}
         className={`w-full ${
           !isLastItem && 'border-b-2'
-        } flex h-[3rem] flex-row items-center justify-between border-solid border-white py-8 md:py-6 lg:py-4`}
+        } flex  flex-row items-center justify-between border-solid border-white py-8 md:py-6 lg:py-4`}
       >
         <div className="flex flex-row items-center ">
           <div
@@ -43,9 +43,9 @@ export default function ItemSelects({
           >
             <h4 className="inline-block">→</h4>
           </div>
-          <h4 className="cursor-pointer text-[1rem]">{title} </h4>
+          <h5 className="cursor-pointer ">{title} </h5>
         </div>
-        <p className="text-right text-[0.8rem]">{type}</p>
+        <p className="text-right ">{type}</p>
       </div>
     </Link>
   );

@@ -55,7 +55,7 @@ export default function Button({
       )}
     >
       {!textScroll ? (
-        <div className={cx('flex w-full flex-row justify-center gap-2')}>
+        <div className={cx('flex w-full flex-row justify-center gap-4')}>
           {Icons && <span className={cx('fill-white')}>{Icons}</span>}
           {title}
         </div>

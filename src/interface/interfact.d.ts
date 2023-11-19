@@ -45,7 +45,7 @@ interface IDataWorks {
   title: string;
   href: string;
   type: string;
-  thumbNail: string;
+  thumbNail: StaticImageData;
   listImgDetails: string[];
   isLastItem?: boolean;
   index?: number | null | undefined;

@@ -10,11 +10,7 @@ const config: Config = {
     rules: [
       {
         test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader',
-        ],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
@@ -32,20 +28,25 @@ const config: Config = {
         worksans: ["var(--font-worksans)"],
         eczar: ["var(--font-eczar)"],
         roboto: ["var(--font-roboto)"],
-        studiofeixen: ['studiofeixen', {
-          fontVariationSettings: '"wght" 600,"wdth" 100'
-        }]
+        studiofeixen: [
+          "studiofeixen",
+          {
+            fontVariationSettings: '"wght" 600,"wdth" 100',
+          },
+        ],
       },
       colors: {
-        primary: '#44444c',
-        borderPrimary: '#595960',
-        scdark: '#212127',
-        bghover: '#303039',
-        bgColor: '#303039',
-        textMain: '#aab2d1',
-
-
-      }
+        primary: "#44444c",
+        borderPrimary: "#595960",
+        scdark: "#212127",
+        bghover: "#303039",
+        bgColor: "#303039",
+        textMain: "#aab2d1",
+      },
+      aspectRatio: {
+        "2/3": "2/3",
+        "3/4": "3/4",
+      },
     },
   },
   plugins: [],

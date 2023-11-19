@@ -3,3 +3,8 @@
 @import '_fonts';
 @import '_reset';
 @import '_mixins';
+@import '_tag';
+
+html {
+  font-size: vh(10px);
+}

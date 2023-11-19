@@ -1,39 +1,32 @@
-$color-debug: #ff6b4c;
 .grid-debug {
-  height: 100vh;
-  pointer-events: none;
   position: fixed;
-  width: 100%;
   top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-  z-index: 99999999999;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  pointer-events: none;
 
-  .grid-col {
-    background-color: rgba($color-debug, 0.3);
-    height: 100vh;
-    position: relative;
-
-    &:before {
-      background-color: rgba($color-debug, 0.3);
-      content: '';
-      height: 100%;
-      left: 0;
-      position: absolute;
-      width: 1px;
-    }
-
-    &:after {
-      background-color: rgba($color-debug, 0.3);
-      content: '';
-      height: 100%;
-      right: 0;
-      position: absolute;
-      width: 1px;
-    }
+  .grid-mobile {
+    display: none;
   }
 }
 
-.col-1 {
-  width: calc(100vw / 24);
+.debug_col {
+  background: rgba(#ff0000, 0.05);
+  height: 100vh;
+  &:nth-child(odd) {
+    background: none;
+  }
+}
+
+.container {
+  padding-left: rem(120px);
+  padding-right: rem(120px);
+  max-width: 100%;
+
+  @include min-tablet {
+    padding-left: rem(120px);
+    padding-right: rem(120px);
+  }
 }

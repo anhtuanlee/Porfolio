@@ -17,10 +17,10 @@ export default function ItemLink({ href, title, email }: ItemLinkProps) {
   return (
     <Comp
       onClick={email && handleOpenForm}
-      className="font-custom link_custom relative  inline-flex  w-full cursor-pointer  flex-row items-center justify-start whitespace-nowrap   text-[1rem] lg:w-auto  "
+      className="font-custom link_custom relative  inline-flex  w-full cursor-pointer  flex-row items-center justify-start whitespace-nowrap lg:w-auto  "
       href={href}
     >
-      <IconsArrowRightUp className="mr-[0.5rem] h-3 w-3 flex-shrink-0" />
+      <IconsArrowRightUp className="mr-[2rem] h-8 w-8 flex-shrink-0" />
       <span className="inline w-full overflow-hidden text-ellipsis">
         {title}
       </span>

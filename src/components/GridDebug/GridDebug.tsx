@@ -1,91 +1,50 @@
-import styles from './GridDebug.module.scss';
+'use client';
+
+import React from 'react';
 import classNames from 'classnames/bind';
 
-const cx = classNames.bind(styles);
+import s from './GridDebug.module.scss';
 
-export default function GridDebug() {
+const cx = classNames.bind(s);
+
+const GridDebug = () => {
+  const [isGridShow, setIsGridShow] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.shiftKey && e.key === 'G') {
+        setIsGridShow(!isGridShow);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isGridShow]);
+
   return (
-    <div className={cx('grid-debug')}>
-      <div className={cx('row')}>
-        <div className={cx('col')}>
-          <div className={cx('container')}>
-            <div className={cx('row')}>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-              <div className={cx('col-1')}>
-                <div className={cx('grid-col')}></div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className={cx('grid-debug', `${isGridShow ? '' : 'hidden'}`)}>
+      <div className="sm:grid-cols-16 xs:grid-cols-6 grid">
+        <div className={cx('col-span-1', 'debug_col')} />
+        <div className={cx('col-span-1', 'debug_col')} />
+        <div className={cx('col-span-1', 'debug_col')} />
+        <div className={cx('col-span-1', 'debug_col')} />
+        <div className={cx('col-span-1', 'debug_col')} />
+        <div className={cx('col-span-1', 'debug_col')} />
+        <div className={cx('debug_col', 'xs:hidden col-span-1 sm:block')} />
+        <div className={cx('debug_col', 'xs:hidden col-span-1 sm:block')} />
+        <div className={cx('debug_col', 'xs:hidden col-span-1 sm:block')} />
+        <div className={cx('debug_col', 'xs:hidden col-span-1 sm:block')} />
+        <div className={cx('debug_col', 'xs:hidden col-span-1 sm:block')} />
+        <div className={cx('debug_col', 'xs:hidden col-span-1 sm:block')} />
+        <div className={cx('debug_col', 'xs:hidden col-span-1 sm:block')} />
+        <div className={cx('debug_col', 'xs:hidden col-span-1 sm:block')} />
+        <div className={cx('debug_col', 'xs:hidden col-span-1 sm:block')} />
+        <div className={cx('debug_col', 'xs:hidden col-span-1 sm:block')} />
       </div>
     </div>
   );
-}
+};
+
+export default GridDebug;

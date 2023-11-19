@@ -87,7 +87,6 @@ video {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: none;
   background: none;
 }
 
@@ -171,4 +170,9 @@ main {
 body {
   overflow-x: hidden !important;
   overscroll-behavior: none !important;
+  letter-spacing: -0.015rem;
+  -webkit-font-smoothing: antialiased;
+}
+::-webkit-scrollbar {
+  display: none;
 }
