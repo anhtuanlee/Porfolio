@@ -2,28 +2,35 @@
 import Link from 'next/link';
 import { IconsArrowRightUp } from '../../../public/access/icons';
 import { useGlobalContext } from '@/context/store';
+import s from './styles.module.scss';
+import classNames from 'classnames/bind';
+import { useStore } from '@/context/stores';
 
-export default function ItemLink({ href, title, email }: ItemLinkProps) {
-  const { isForm, setIsForm } = useGlobalContext();
-  const handleOpenForm = () => {
-    console.log(isForm);
-    setIsForm(!isForm);
-  };
+const cx = classNames.bind(s);
 
-  let Comp: any = Link;
-  if (email) {
-    Comp = 'span';
-  }
+export default function ItemLink({ href = '', title, email }: ItemLinkProps) {
+  const setIdLinkHover = useStore(state => state.setIdCursorHover);
+
   return (
-    <Comp
-      onClick={email && handleOpenForm}
-      className="font-custom link_custom relative  inline-flex  w-full cursor-pointer  flex-row items-center justify-start whitespace-nowrap lg:w-auto  "
+    <Link
+      className={cx(
+        ` relative  inline-flex w-full cursor-pointer  flex-row items-center justify-start whitespace-nowrap lg:w-auto`,
+        'item_link',
+      )}
       href={href}
+      onMouseEnter={() => setIdLinkHover('link')}
+      onMouseLeave={() => setIdLinkHover(null)}
     >
-      <IconsArrowRightUp className="mr-[2rem] h-8 w-8 flex-shrink-0" />
-      <span className="inline w-full overflow-hidden text-ellipsis">
+      <IconsArrowRightUp className="mr-[1rem] h-8 w-8 flex-shrink-0" />
+      <span
+        className={cx(
+          'item_link',
+          'item_link_text',
+          'overflow-hidden text-ellipsis',
+        )}
+      >
         {title}
       </span>
-    </Comp>
+    </Link>
   );
 }

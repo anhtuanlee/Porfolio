@@ -2,6 +2,10 @@
 import { useGlobalContext } from '@/context/store';
 import Link from 'next/link';
 import { useState } from 'react';
+import styles from './styles.module.scss';
+import classNames from 'classnames/bind';
+
+const cx = classNames.bind(styles);
 
 export default function ItemSelects({
   title,
@@ -29,11 +33,12 @@ export default function ItemSelects({
   return (
     <Link href={href} target="_blank">
       <div
-        onMouseMove={(e: any) => handleHover(e, index!)}
-        onMouseLeave={handleLeave}
-        className={`w-full ${
-          !isLastItem && 'border-b-2'
-        } flex  flex-row items-center justify-between border-solid border-white py-8 md:py-6 lg:py-4`}
+        // onMouseMove={(e: any) => handleHover(e, index!)}
+        // onMouseLeave={handleLeave}
+        className={cx(
+          `flex w-full  flex-row items-center justify-between py-8 md:py-6 lg:py-4`,
+          'item_select_work',
+        )}
       >
         <div className="flex flex-row items-center ">
           <div

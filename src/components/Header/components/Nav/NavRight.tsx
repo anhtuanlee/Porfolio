@@ -6,9 +6,17 @@ import classNames from 'classnames/bind';
 import gsap from 'gsap';
 import Link from 'next-intl/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { useEffect, useLayoutEffect, useRef, forwardRef } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 import styles from './Nav.module.scss';
 import Framer from '@/components/Framer/Framer';
+import { useStore } from '@/context/stores';
+import { useRefs } from '@/hooks/useRefs';
 
 const cx = classNames.bind(styles);
 
@@ -16,10 +24,17 @@ export default function NavRight({ forwardRef }: { forwardRef: any }) {
   const locale = useLocale();
   const selectedLayoutSegment = useSelectedLayoutSegment() || '';
   const navRef = useRef<any>(null);
-  const { isOpenMenuHeader, setIsOpenMenuHeader } = useGlobalContext();
+  const { setIdCursorHover, isOpenMenuHeader, setIsOpenMenuHeader } =
+    useStore();
   const handleOpenMenu = () => {
     setIsOpenMenuHeader(!isOpenMenuHeader);
   };
+  const { refsByKey, setRef } = useRefs();
+
+  // set refs footer
+  useImperativeHandle(forwardRef, () => ({
+    refsByKey,
+  }));
 
   useLayoutEffect(() => {
     const tl = gsap.timeline();
@@ -44,16 +59,23 @@ export default function NavRight({ forwardRef }: { forwardRef: any }) {
   }, [isOpenMenuHeader]);
   return (
     <nav
-      className="flex flex-row items-center justify-center gap-2   font-medium"
+      className="flex flex-row items-center justify-center gap-4 font-medium sm:gap-32"
       ref={navRef}
+      onMouseEnter={() => setIdCursorHover('icon')}
+      onMouseLeave={() => setIdCursorHover(null)}
     >
-      <Link
-        href={`/${selectedLayoutSegment}`}
-        locale={locale === 'vi' ? 'en' : 'vi'}
-      >
-        {locale === 'vi' ? 'EN' : 'VI'}
-      </Link>
-
+      {/* <Framer>
+        <Link
+          href={`/${selectedLayoutSegment}`}
+          locale={locale === 'vi' ? 'en' : 'vi'}
+        >
+          <div
+            ref={element => setRef(element, '0')}
+            className={cx('bounds')}
+          ></div>
+          <span className="p-8 ">{locale === 'vi' ? 'EN' : 'VI'}</span>
+        </Link>
+      </Framer> */}
       <Framer>
         <span
           className={cx('icon_menu', 'relative z-10 cursor-pointer')}
@@ -102,7 +124,11 @@ export default function NavRight({ forwardRef }: { forwardRef: any }) {
               ></path>
             </g>
           </svg>
-          <div ref={forwardRef} className={cx('bounds')}></div>
+          {/* <div ref={forwardRef} className={cx('bounds')}></div> */}
+          <div
+            ref={element => setRef(element, '1')}
+            className={cx('bounds')}
+          ></div>
         </span>
       </Framer>
     </nav>

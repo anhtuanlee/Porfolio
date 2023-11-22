@@ -4,7 +4,12 @@ export const dataContact: Array<{
 }> = [
         {
             title: 'Mail',
-            links: [{ sublink: '', link: 'anhtuan.devfe@gmail.com' }],
+            links: [
+                {
+                    sublink: 'anhtuan.devfe@gmail.com',
+                    link: 'mailto:anhtuan.devfe@gmail.com',
+                },
+            ],
         },
         {
             title: 'Socal Medias',

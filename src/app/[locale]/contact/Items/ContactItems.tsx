@@ -4,7 +4,7 @@ import ItemLink from '../../../../components/ItemLink/ItemLink';
 
 export default function ContactItems({ title, links }: ItemContactProps) {
   return (
-    <div className="flex w-full flex-row lg:gap-10 ">
+    <div className="flex w-full flex-row items-center lg:gap-10">
       <h5
         className="w-1/2 flex-shrink-0 whitespace-normal pr-[25%]  uppercase sm:pr-0 md:w-1/2 md:whitespace-nowrap 
       lg:w-auto  "
@@ -14,7 +14,11 @@ export default function ContactItems({ title, links }: ItemContactProps) {
       <ul className="flex flex-col overflow-hidden lg:w-full">
         {links.length === 1 ? (
           <li className="inline-flex flex-row text-xs ">
-            <ItemLink email={links[0].link} title={links[0].link} />
+            <ItemLink
+              // email={links[0].link}
+              href={links[0].link}
+              title={links[0].sublink}
+            />
           </li>
         ) : (
           links.map((l: ILink, i: number) => {

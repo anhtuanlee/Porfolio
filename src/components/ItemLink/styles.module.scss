@@ -1,0 +1,52 @@
+.item_link {
+  width: auto;
+  color: #ffffffb2;
+  position: relative;
+  letter-spacing: -0.01em;
+  line-height: 2;
+  margin: 0;
+  width: 100%;
+  background: linear-gradient(to right, #fff, #fff) no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-size: 0%;
+  transition: background-size cubic-bezier(0.1, 0.5, 0.5, 1) 0.5s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    border: 0px solid #797777;
+    width: 0px;
+    left: 0;
+    z-index: 1;
+    transition: all 0.5s ease-in;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    border: 0px solid #ffffff;
+    width: 0px;
+    left: 0;
+    z-index: 2;
+    transition: all 0.25s ease-out;
+  }
+}
+.item_link :hover {
+  background-size: 100%;
+  &::after {
+    width: 100%;
+    border-width: 0.05rem;
+    transition: width 0.25s ease-out;
+  }
+  &::before {
+    width: 100%;
+    border-width: 0.05rem;
+    transition: width 0.5s ease-in;
+  }
+}
+.item_link_text {
+  display: inline;
+  width: auto;
+}

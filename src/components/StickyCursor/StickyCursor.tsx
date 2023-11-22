@@ -9,6 +9,7 @@ import {
   animate,
 } from 'framer-motion';
 import s from './StickyCursor.module.scss';
+import { useStore } from '@/context/stores';
 
 function Cursor({
   stickyElement, // footerElements,
@@ -18,7 +19,28 @@ function Cursor({
 }) {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const cursorRef = useRef<any>(null);
-  const cursorSize = isHovered ? 60 : 15;
+  const idCurSor = useStore(state => state.idCursorHover);
+
+  const getCursorSize = (idCurSor: TInputIdCursor) => {
+    switch (idCurSor) {
+      case 'hero':
+        return 100;
+      case 'link':
+        return 40;
+      case null:
+        return 15;
+      case Number(idCurSor) || 'icon':
+        return 60;
+      default:
+        console.log('default cursor');
+    }
+  };
+  const cursorSize = getCursorSize(idCurSor);
+  // isHovered || (idCurSor !== 'hero' && idCurSor !== null)
+  //   ? 60
+  //   : idCurSor === 'hero'
+  //   ? 100
+  //   : 15;
 
   const mouse = {
     x: useMotionValue(0),
@@ -47,27 +69,32 @@ function Cursor({
     //center position of the stickyElement
     const center = { x: left + width / 2, y: top + height / 2 };
 
-    if (isHovered) {
-      //distance between the mouse pointer and the center of the custom cursor and
-      const distance = { x: clientX - center.x, y: clientY - center.y };
+    if (cursorSize) {
+      if (isHovered) {
+        //distance between the mouse pointer and the center of the custom cursor and
+        const distance = { x: clientX - center.x, y: clientY - center.y };
 
-      //rotate
-      rotate(distance);
+        //rotate
+        rotate(distance);
 
-      //stretch based on the distance
-      const absDistance = Math.max(Math.abs(distance.x), Math.abs(distance.y));
-      const newScaleX = transform(absDistance, [0, height / 2], [1, 1.3]);
-      const newScaleY = transform(absDistance, [0, width / 2], [1, 0.8]);
-      scale.x.set(newScaleX);
-      scale.y.set(newScaleY);
+        //stretch based on the distance
+        const absDistance = Math.max(
+          Math.abs(distance.x),
+          Math.abs(distance.y),
+        );
+        const newScaleX = transform(absDistance, [0, height / 2], [1, 1.3]);
+        const newScaleY = transform(absDistance, [0, width / 2], [1, 0.8]);
+        scale.x.set(newScaleX);
+        scale.y.set(newScaleY);
 
-      //move mouse to center of stickyElement + slightly move it towards the mouse pointer
-      mouse.x.set(center.x - cursorSize / 2 + distance.x * 0.1);
-      mouse.y.set(center.y - cursorSize / 2 + distance.y * 0.1);
-    } else {
-      //move custom cursor to center of stickyElement
-      mouse.x.set(clientX - cursorSize / 2);
-      mouse.y.set(clientY - cursorSize / 2);
+        //move mouse to center of stickyElement + slightly move it towards the mouse pointer
+        mouse.x.set(center.x - cursorSize / 2 + distance.x * 0.1);
+        mouse.y.set(center.y - cursorSize / 2 + distance.y * 0.1);
+      } else {
+        //move custom cursor to center of stickyElement
+        mouse.x.set(clientX - cursorSize / 2);
+        mouse.y.set(clientY - cursorSize / 2);
+      }
     }
   };
 
@@ -81,33 +108,37 @@ function Cursor({
   };
 
   useEffect(() => {
-    stickyElement.current.addEventListener('mouseenter', manageMouseOver);
-    stickyElement.current.addEventListener('mouseleave', manageMouseLeave);
     window.addEventListener('mousemove', manageMouseMove);
-    return () => {
-      stickyElement.current.removeEventListener('mouseenter', manageMouseOver);
-      stickyElement.current.removeEventListener('mouseleave', manageMouseLeave);
-      window.removeEventListener('mousemove', manageMouseMove);
-    };
-  }, [isHovered, stickyElement.current]);
 
-  // handle sticky with each footerEl
-  // useEffect(() => {
-  //   console.log('eheehe');
-  //   const parentEl = footerElements.current.refs;
-  //   Object.values(parentEl).forEach((footerElement: any) => {
-  //     footerElement.addEventListener('mouseenter', manageMouseOver);
-  //     footerElement.addEventListener('mouseleave', manageMouseLeave);
-  //   });
-  //   window.addEventListener('mousemove', manageMouseMove);
-  //   return () => {
-  //     Object.values(parentEl).forEach((footerElement: any) => {
-  //       footerElement.removeEventListener('mouseenter', manageMouseOver);
-  //       footerElement.removeEventListener('mouseleave', manageMouseLeave);
-  //     });
-  //     window.removeEventListener('mousemove', manageMouseMove);
-  //   };
-  // }, [isHovered, footerElements.current]);
+    if (stickyElement.current instanceof HTMLElement) {
+      stickyElement?.current?.addEventListener('mouseenter', manageMouseOver);
+      stickyElement?.current?.addEventListener('mouseleave', manageMouseLeave);
+      return () => {
+        stickyElement?.current?.removeEventListener(
+          'mouseenter',
+          manageMouseOver,
+        );
+        stickyElement?.current?.removeEventListener(
+          'mouseleave',
+          manageMouseLeave,
+        );
+      };
+    } else {
+      const listItemsMotion = Object.values(
+        stickyElement.current.refsByKey,
+      ) as HTMLElement[];
+      listItemsMotion.forEach(item => {
+        item.addEventListener('mouseenter', manageMouseOver);
+        item.addEventListener('mouseleave', manageMouseLeave);
+        return () => {
+          item.removeEventListener('mouseenter', manageMouseOver);
+          item.removeEventListener('mouseleave', manageMouseLeave);
+        };
+      });
+    }
+
+    return () => window.removeEventListener('mousemove', manageMouseMove);
+  }, [isHovered, stickyElement, cursorSize]);
 
   const template = ({ rotate, scaleX, scaleY }: any) => {
     return `rotate(${rotate}) scaleX(${scaleX}) scaleY(${scaleY})`;
@@ -127,6 +158,7 @@ function Cursor({
           width: cursorSize,
           height: cursorSize,
         }}
+        transition={{ type: 'tween', ease: 'backOut', duration: 0.5 }}
         className={s.cursor}
         ref={cursorRef}
       ></motion.div>

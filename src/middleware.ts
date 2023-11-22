@@ -2,7 +2,7 @@ import createMiddleware from 'next-intl/middleware';
 
 export default createMiddleware({
     defaultLocale: 'en',
-    locales: ['en', 'vi'],
+    locales: ['en'],
     // domains: [
     //     {
     //         domain: 'http://portfolio-anhtuanlee.vercel.app',

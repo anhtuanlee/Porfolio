@@ -32,7 +32,7 @@
     .text-stroke {
       @apply font-roboto;
       font-family: Arial, Helvetica, sans-serif !important;
-      -webkit-text-stroke: 1.25px #aab2d1;
+      -webkit-text-stroke: 1.25px #fff;
       color: transparent;
       font-weight: 700;
     }
@@ -43,38 +43,6 @@
   @font-face {
     font-family: 'studiofeixen';
     src: url('/access/font/studio-feixen-sans-variable.woff2');
-  }
-
-  .btn {
-    @apply w-full rounded p-3 font-bold;
-  }
-
-  .btn-border {
-    @apply rounded border border-borderPrimary bg-transparent font-semibold text-white hover:border-transparent hover:bg-borderPrimary hover:text-white;
-  }
-
-  .btn-primary {
-    @apply w-[10rem] items-center rounded bg-primary font-bold text-white hover:bg-bghover;
-  }
-
-  .btn-secondary {
-    @apply rounded-3xl bg-gradient-to-r from-scdark via-primary to-scdark bg-[length:200%] bg-no-repeat transition-all duration-200 ease-out hover:bg-[100%];
-  }
-
-  .btn-textScroll {
-    @apply fixed bottom-[5%] left-1/2 mx-auto flex h-[4rem] w-[4rem] translate-x-[-50%] items-center justify-center rounded-full bg-scdark;
-  }
-
-  .btn-disable {
-    @apply cursor-not-allowed rounded bg-primary font-bold text-white opacity-50;
-  }
-
-  .btn_dual_first {
-    @apply relative inline-flex h-[45px] w-[40px] flex-shrink-0 items-center justify-center overflow-hidden rounded-full border-[1px] border-solid border-primary transition-all duration-1000 ease-in-out before:flex before:justify-center before:opacity-0 hover:w-[80%] hover:rounded-full hover:border-primary hover:bg-transparent hover:before:absolute hover:before:w-full hover:before:whitespace-nowrap hover:before:text-white hover:before:opacity-100 hover:before:transition-all hover:before:duration-1000 hover:before:content-['Dowload_Resume'] hover:after:content-[''];
-  }
-
-  .btn_dual_seconds {
-    @apply relative right-[5px] h-[40px] flex-shrink overflow-hidden rounded-full bg-primary leading-none text-white before:absolute before:inset-0 before:flex before:items-center before:justify-center before:whitespace-nowrap before:content-['View_Portfolio'] after:transition-all after:duration-1000 hover:bg-bghover;
   }
 
   .link_custom {

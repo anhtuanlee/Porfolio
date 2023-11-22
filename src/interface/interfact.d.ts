@@ -1,8 +1,6 @@
 interface ButtonProps {
-  primary?: boolean;
-  border?: boolean;
-  secondary?: boolean;
   textScroll?: boolean;
+  type: 'primary' | 'border' | 'secondary';
   title: string;
   disable?: boolean;
   Icons?: React.ReactNode;

@@ -1,14 +1,12 @@
 'use client';
+import { useStore } from '@/context/stores';
 import styles from './Button.module.scss';
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 
 const cx = classNames.bind(styles);
 export default function Button({
-  primary,
-  secondary,
   title,
-  border,
   textScroll,
   disable,
   Icons,
@@ -38,38 +36,17 @@ export default function Button({
     Comp = Link;
     props.href = to;
   }
-
+  const { setIdCursorHover } = useStore();
   return (
     <Comp
       {...props}
       onClick={onHandle}
       type={type}
-      className={cx(
-        `btn ${
-          (primary && 'btn-primary') ||
-          (secondary && 'btn-secondary') ||
-          (border && 'btn-border') ||
-          (textScroll && 'btn-textScroll') ||
-          (disable && 'disabled')
-        } ${className} `,
-      )}
+      className={cx('btn', `btn-${type}`)}
+      onMouseEnter={() => setIdCursorHover('icon')}
+      onMouseLeave={() => setIdCursorHover(null)}
     >
-      {!textScroll ? (
-        <div className={cx('flex w-full flex-row justify-center gap-4')}>
-          {Icons && <span className={cx('fill-white')}>{Icons}</span>}
-          {title}
-        </div>
-      ) : (
-        <div
-          className={cx(
-            'btn_icon_text',
-            'transform[-50%,-50%] fter:rounded-full absolute bottom-[5%] h-10 w-10     ',
-          )}
-        >
-          {Icons}
-        </div>
-      )}
-      {textScroll && <span className="flex h-[40%] w-[40%]">{IconsSub}</span>}
+      {title}
     </Comp>
   );
 }

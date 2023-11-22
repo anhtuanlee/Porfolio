@@ -8,3 +8,6 @@
 html {
   font-size: vh(10px);
 }
+::selection {
+  background-color: #000;
+}

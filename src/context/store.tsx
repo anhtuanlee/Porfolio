@@ -16,6 +16,8 @@ interface ContextProps {
   setPathImgHover: Dispatch<SetStateAction<string>>;
   isOpenMenuHeader: boolean;
   setIsOpenMenuHeader: Dispatch<SetStateAction<boolean>>;
+  idMenuHover: null | number;
+  setIdMenuHover: Dispatch<SetStateAction<null | number>>;
 }
 
 const GlobalContext = createContext<ContextProps>({
@@ -27,6 +29,8 @@ const GlobalContext = createContext<ContextProps>({
   setPathImgHover: (): string => '',
   isOpenMenuHeader: false,
   setIsOpenMenuHeader: (): boolean => false,
+  idMenuHover: null,
+  setIdMenuHover: (): number | null => null,
 });
 
 export const GlobalContextProvider = ({ children }: any) => {
@@ -34,6 +38,7 @@ export const GlobalContextProvider = ({ children }: any) => {
   const [isHoverImg, setIsHoverImg] = useState<boolean>(false);
   const [pathImgHover, setPathImgHover] = useState<string>('');
   const [isOpenMenuHeader, setIsOpenMenuHeader] = useState<boolean>(false);
+  const [idMenuHover, setIdMenuHover] = useState<null | number>(null);
   return (
     <GlobalContext.Provider
       value={{
@@ -45,6 +50,8 @@ export const GlobalContextProvider = ({ children }: any) => {
         setPathImgHover,
         isOpenMenuHeader,
         setIsOpenMenuHeader,
+        idMenuHover,
+        setIdMenuHover,
       }}
     >
       {children}

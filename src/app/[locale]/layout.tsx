@@ -36,9 +36,9 @@ export default async function LocaleLayout({
     // notFound();
   }
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning={true}>
       <body
-        className={`${worksans.variable} ${eczar.variable} ${roboto.variable} bg-bgColor text-white`}
+        className={`${worksans.variable} ${eczar.variable} ${roboto.variable} text-white`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <main className={`${'font-studiofeixen'}`}>

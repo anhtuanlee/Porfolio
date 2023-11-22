@@ -1,8 +1,9 @@
 import classNames from 'classnames/bind';
-import gsap from 'gsap';
+import gsap, { Power0 } from 'gsap';
 import { useEffect, useRef, useState } from 'react';
-import { IntroText } from '../../../public/access/icons';
+import { IntroText, IntroTextMobile } from '../../../public/access/icons';
 import styles from './Intro.module.scss';
+import useWindowResize from '@/hooks/useWindowResize';
 
 const cx = classNames.bind(styles);
 
@@ -11,7 +12,7 @@ export default function Intro() {
   const introTextRef = useRef<null | SVGElement>(null);
   const couterRef = useRef<HTMLHeadingElement | null>(null);
   const containerIntroRef = useRef<HTMLDivElement>(null);
-
+  const { isMobile } = useWindowResize();
   useEffect(() => {
     let delay = Math.floor(Math.random() * 20) * 10;
     const timer = setInterval(() => {
@@ -29,7 +30,7 @@ export default function Intro() {
     }, delay);
 
     return () => clearInterval(timer);
-  }, [couter]);
+  }, [couter, isMobile]);
 
   useEffect(() => {
     const listChilds = introTextRef.current
@@ -38,6 +39,8 @@ export default function Intro() {
     listChilds.forEach((item, index) => {
       if (item instanceof SVGPathElement) {
         const lengthPath = item.getTotalLength().toString();
+        const dataText = item.dataset.text;
+
         gsap.set(item, {
           strokeDasharray: lengthPath,
           strokeDashoffset: lengthPath,
@@ -47,14 +50,19 @@ export default function Intro() {
         });
         gsap.to(item, {
           strokeDashoffset: 0,
-          duration: 1,
-          delay: 0.5 + 0.05 * index,
+          duration: 2,
+          delay: 2 - 0.15 * index,
           opacity: 1,
           stagger: {
-            amount: 0.6,
+            amount: 0.5,
           },
-          // ease: 'power1.inOut',
         });
+        if (isMobile) {
+          gsap.to(item, {
+            fill: dataText ? '#fff' : 'transparent',
+            delay: 4,
+          });
+        }
       }
     });
     gsap.to(couterRef.current, {
@@ -67,29 +75,37 @@ export default function Intro() {
       delay: 4,
     });
     gsap.to(introTextRef.current, {
-      scale: 20,
-      duration: 0.5,
+      scale: isMobile ? 0.8 : 0.5,
+      duration: 0.4,
       delay: 4,
       ease: 'power4.easeInOut',
       display: 'none',
     });
     gsap.to(containerIntroRef.current, {
-      display: 'none',
+      background: 'transparent',
       delay: 4.5,
-      rotate: 180,
       duration: 0.5,
-      opacity: 0,
+      ease: Power0.easeNone,
     });
-  }, [introTextRef, containerIntroRef]);
+    gsap.to(containerIntroRef.current, {
+      display: 'none',
+      delay: 4.6,
+      duration: 1,
+    });
+  }, [introTextRef, containerIntroRef, isMobile]);
   return (
     <div
       ref={containerIntroRef}
-      className="fixed inset-0 z-30  flex h-full w-full items-center justify-center bg-black"
+      className="fixed inset-0 z-30 flex h-full w-full items-center justify-center bg-black"
     >
       <h2 ref={couterRef} className={cx('couter')}></h2>
 
       <div className="fixed z-20 flex h-auto w-full items-center justify-center">
-        <IntroText classNames={cx('icon__text')} ref={introTextRef} />
+        {isMobile ? (
+          <IntroTextMobile classNames={cx('icon__text')} ref={introTextRef} />
+        ) : (
+          <IntroText classNames={cx('icon__text')} ref={introTextRef} />
+        )}
       </div>
     </div>
   );
