@@ -10,9 +10,9 @@ p {
     'wght' 500,
     'wdth' 100;
   line-height: 1.6;
-  font-size: rem(26px);
+  font-size: rem(18px);
   @include min-tablet {
-    font-size: rem(26px);
+    font-size: rem(24px);
   }
 }
 a {

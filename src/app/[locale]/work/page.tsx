@@ -1,23 +1,22 @@
 'use client';
 
-import { dataWork } from '@/data/data';
-import ItemSelects from '../../../components/ItemSelects/ItemSelect';
-import TitleSection from '../../../components/TitleSection/TitleSection';
-import { useGlobalContext } from '../../../context/store';
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import Container from '@/components/Container/Container';
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import ImageSlide from '@/components/ImagSlide';
+import SlideWrapper from '@/components/SlideWrapper/SliderWrapper';
 import { useStore } from '@/context/stores';
+import { DATA_PROJECTS } from '@/data/data';
 import { useRefs } from '@/hooks/useRefs';
 import gsap from 'gsap';
-import SlideWrapper from '@/components/SlideWrapper/SliderWrapper';
+import { useTranslations } from 'next-intl';
+import { useEffect, useLayoutEffect, useRef } from 'react';
+import ItemSelects from '../../../components/ItemSelects/ItemSelect';
+import TitleSection from '../../../components/TitleSection/TitleSection';
 
 export default function Work() {
   const t = useTranslations('Work');
-  const { pathImgHover, isHoverImg } = useGlobalContext();
-  const isOpenMenuHeader = useStore(state => state.isOpenMenuHeader);
+  const { isOpenMenuHeader, setPathImgHover, data, isHoverImg } = useStore();
   const sectionWorkRef = useRef<any>(null);
+  const workRef = useRef<HTMLDivElement>(null);
   const { refsByKey: refsWork, setRef: setRefWork } = useRefs();
 
   useLayoutEffect(() => {
@@ -34,13 +33,20 @@ export default function Work() {
           {
             y: 0,
             opacity: 1,
-            duration: 0.15,
+            duration: 0.3,
             autoAlpha: 1,
+            delay: isOpenMenuHeader ? 0 : 0.5,
             ease: 'Expo.easeInOut',
+
             stagger: { amount: 0.5 },
           },
           isOpenMenuHeader ? 0 : 1,
         ).reverse();
+
+        tl.to(workRef.current, {
+          width: '100%',
+          duration: 0.5,
+        });
       });
     });
 
@@ -49,27 +55,28 @@ export default function Work() {
   useEffect(() => {
     sectionWorkRef.current && sectionWorkRef.current.reversed(isOpenMenuHeader);
   }, [isOpenMenuHeader]);
+
   return (
     <Container>
       <div className="mx-[1rem] mt-[30vh] sm:mx-[section]  ">
         <div className="lg:flex lg:h-[65vh] lg:flex-row lg:justify-between lg:gap-10">
           <section className="hidden lg:flex lg:h-full lg:w-1/2 lg:items-center lg:justify-center">
-            <figure className="overflow-hidden lg:w-1/2 lg:rounded-tr-[3rem]">
-              {isHoverImg && (
-                <Image fill loading="lazy" alt="img-demo" src={pathImgHover} />
-              )}
-            </figure>
+            {<ImageSlide href={data?.path} alt={data?.title ?? 'img'} />}
           </section>
           <div className="w-full flex-shrink-0 lg:w-1/2">
-            <SlideWrapper ref={el => setRefWork(el, '0')}>
-              <TitleSection title={t('title_section')} />
-            </SlideWrapper>
+            <div
+              ref={workRef}
+              className="w-0 border-b-[0.3rem] border-l-0 border-r-0 border-t-0 border-solid border-white"
+            >
+              <SlideWrapper ref={el => setRefWork(el, '0')}>
+                <TitleSection title={t('title_section')} />
+              </SlideWrapper>
+            </div>
             <div
               className="no-scrollbar flex h-[50vh] w-full flex-col sm:overflow-scroll lg:pb-4
             "
             >
-              {dataWork.map((data: IDataWorks, index: number) => {
-                let id = 200 + index;
+              {DATA_PROJECTS.map((data, index) => {
                 return (
                   <SlideWrapper
                     key={index}
@@ -78,12 +85,10 @@ export default function Work() {
                     <ItemSelects
                       key={index}
                       title={data.title}
-                      href={data.href}
-                      type={data.type}
-                      thumbNail={data.thumbNail}
-                      isLastItem={index === dataWork.length - 1}
+                      href={`/work/${data.key}`}
+                      type={data.category}
+                      thumbNail={data.thumbnail}
                       index={index}
-                      listImgDetails={data.listImgDetails}
                     />
                   </SlideWrapper>
                 );

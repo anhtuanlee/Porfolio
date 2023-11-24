@@ -42,8 +42,6 @@ export default function BlockCanvas() {
           far: 2000,
         }}
       >
-        <color attach="background" args={['#33333C']} />
-
         <ambientLight intensity={0.5} />
         <spotLight castShadow position={[1, 1, 1]} angle={0.15} penumbra={1} />
         <pointLight castShadow position={[-10, -10, -10]} />

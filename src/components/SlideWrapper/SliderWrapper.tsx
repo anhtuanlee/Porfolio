@@ -6,10 +6,10 @@ import { forwardRef } from 'react';
 
 const cx = classNames.bind(styles);
 
-const SlideWrapper = forwardRef<any, any>(({ children }, ref) => {
+const SlideWrapper = forwardRef<any, any>(({ children, classNames }, ref) => {
   return (
-    <div ref={ref} className={cx('item_wrapper')}>
-      <div className={cx('item_slide')}>{children}</div>
+    <div ref={ref} className={cx('item_wrapper', `${classNames}`)}>
+      <div className={cx('item_slide', `${classNames}`)}>{children}</div>
     </div>
   );
 });

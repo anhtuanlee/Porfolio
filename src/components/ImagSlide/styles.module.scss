@@ -1,0 +1,14 @@
+.wrapper_img,
+.wrapper_img_inner {
+  height: 100%;
+  overflow: hidden;
+  clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+  will-change: transform;
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+.wrapper_img {
+  background: #131313;
+}

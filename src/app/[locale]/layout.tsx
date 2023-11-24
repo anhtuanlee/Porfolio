@@ -1,12 +1,9 @@
-import Header from '@/components/Header/Header';
+import { Layout } from '@/components/Layout/Layout';
 import '@/styles/global.scss';
 import '@/styles/index.scss';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { Eczar, Roboto_Serif, Work_Sans } from 'next/font/google';
-import Wrapper from '../../components/Wrapper/Wrapper';
-import { GlobalContextProvider } from '../../context/store';
-import { Layout } from '@/components/Layout/Layout';
 
 //Text Hightlight Eczar
 const worksans = Work_Sans({ subsets: ['latin'], variable: '--font-worksans' });
@@ -17,11 +14,46 @@ export const metadata: Metadata = {
   title: 'Portfolio',
   description: 'Venn Portfolio',
   icons: {
-    icon: '/flat.ico',
-    apple: '/flat.ico',
+    apple: [{ url: '/flat.ico', type: 'image/ico' }],
+    icon: [{ url: './flat.ico', type: 'image/ico' }],
+  },
+  keywords: [
+    'Next.js',
+    'React',
+    'JavaScript',
+    'Venn',
+    'Le Anh Tuan',
+    'Portfolio',
+  ],
+  authors: [{ name: 'Le Anh Tuan' }, { name: 'Venn' }],
+  creator: 'Venn',
+  publisher: 'Venn ',
+  applicationName: 'Portfolio',
+  openGraph: {
+    title: 'Blog',
+    images: [
+      {
+        url: '/access/images/img_portfolio_1.png',
+        width: 800,
+        height: 600,
+        alt: 'My Portfolio',
+      },
+    ],
+  },
+  robots: {
+    index: false,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
-
 export default async function LocaleLayout({
   children,
   params: { locale },
@@ -42,11 +74,7 @@ export default async function LocaleLayout({
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <main className={`${'font-studiofeixen'}`}>
-            {
-              <GlobalContextProvider>
-                <Layout>{children}</Layout>
-              </GlobalContextProvider>
-            }
+            {<Layout>{children}</Layout>}
           </main>
         </NextIntlClientProvider>
       </body>

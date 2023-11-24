@@ -1,15 +1,13 @@
-import { ROUTE_PATH } from '@/constant/rout-path';
-import Link from 'next/link';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import styles from './Menu.module.scss';
-import classNames from 'classnames/bind';
-import { useGlobalContext } from '@/context/store';
-import gsap, { Power4 } from 'gsap';
-import { Power2 } from 'gsap';
-import { DATA_SOCIAL } from '@/data/data';
 import ItemLink from '@/components/ItemLink/ItemLink';
-import { useRefs } from '@/hooks/useRefs';
+import { ROUTE_PATH } from '@/constant/rout-path';
 import { useStore } from '@/context/stores';
+import { DATA_SOCIAL } from '@/data/data';
+import { useRefs } from '@/hooks/useRefs';
+import classNames from 'classnames/bind';
+import gsap, { Power4 } from 'gsap';
+import Link from 'next/link';
+import { useEffect, useLayoutEffect, useRef } from 'react';
+import styles from './Menu.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -56,7 +54,6 @@ export default function Menu() {
 
       tl.to(bgMenuRef.current, {
         opacity: 1,
-        duration: 1,
         ease: Power4.easeInOut,
       });
       refsHeaderItems.forEach(item => {

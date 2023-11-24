@@ -1,7 +1,6 @@
 .item_wrapper {
   transition: transform 400ms cubic-bezier(0.4, 0, 1, 1);
   overflow: hidden;
-  line-height: rem(100px);
 }
 .item_slide {
   transition: transform 400ms cubic-bezier(0.4, 0, 1, 1);

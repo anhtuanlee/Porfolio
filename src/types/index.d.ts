@@ -26,4 +26,18 @@ declare global {
         isOpenMenuHeader: false;
         setIsOpenMenuHeader: (isOpen: boolean) => boolean;
     };
+    type TDataHoverImg = {
+        path: string;
+        title: string;
+    };
+    type TImgHoverStore = {
+        data: TDataHoverImg | undefined;
+        isHoverImg: boolean;
+        setIsHover: (hover: boolean) => boolean;
+        setPathImgHover: (data: TDataHoverImg | undefined) => TDataHoverImg;
+    };
+    type TImageSlide = {
+        href: string | undefined;
+        alt: string;
+    };
 }

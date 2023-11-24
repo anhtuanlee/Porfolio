@@ -16,6 +16,9 @@ const config: Config = {
   },
   theme: {
     extend: {
+      lineHeight: {
+        "extra-loose": "4",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -46,6 +49,7 @@ const config: Config = {
       aspectRatio: {
         "2/3": "2/3",
         "3/4": "3/4",
+        "3/2": "3/2",
       },
     },
   },

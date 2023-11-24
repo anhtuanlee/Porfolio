@@ -11,8 +11,53 @@ import { useRefs } from '@/hooks/useRefs';
 import { useStore } from '@/context/stores';
 import SlideWrapper from '@/components/SlideWrapper/SliderWrapper';
 import gsap from 'gsap';
+import { useSmoothScroll } from '@/hooks/useSmoothScroll';
+import { Metadata } from 'next';
 
 const cx = classNames.bind(styles);
+
+export const metadata: Metadata = {
+  title: 'About',
+  keywords: [
+    'Next.js',
+    'React',
+    'JavaScript',
+    'Venn',
+    'Le Anh Tuan',
+    'Portfolio',
+  ],
+  authors: [
+    { name: 'Le Anh Tuan' },
+    { name: 'Venn', url: 'https://nextjs.org' },
+  ],
+  creator: 'Venn',
+  publisher: 'Venn ',
+  applicationName: 'Portfolio',
+  openGraph: {
+    title: 'Blog',
+    images: [
+      {
+        url: '/access/images/img_portfolio_1.png',
+        width: 800,
+        height: 600,
+        alt: 'My Portfolio',
+      },
+    ],
+  },
+  robots: {
+    index: false,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 export default function About() {
   const t = useTranslations('About');
 
@@ -20,18 +65,16 @@ export default function About() {
   const isOpenMenuHeader = useStore(state => state.isOpenMenuHeader);
   const headerAboutRef = useRef<HTMLDivElement>(null);
   const { refsByKey: refsAbout, setRef: setRefAbout } = useRefs();
-
+  useSmoothScroll();
   useLayoutEffect(() => {
     const refs = Object.values(refsAbout).filter(Boolean);
 
     let ctx = gsap.context(() => {
       const tl = gsap.timeline();
       sectionContactRef.current = tl;
-      console.log(refs);
 
       refs.forEach((item, index) => {
         const itemChild = item?.children[0] as HTMLDivElement;
-        console.log(index);
 
         tl.to(
           itemChild,
@@ -39,7 +82,7 @@ export default function About() {
             y: 0,
             opacity: 1,
             duration: 0.3,
-            delay: 1,
+            delay: isOpenMenuHeader ? 0 : 0.5,
             autoAlpha: 1,
             ease: 'Expo.easeInOut',
             stagger: { amount: 0.5 },
@@ -49,7 +92,7 @@ export default function About() {
       });
       tl.to(headerAboutRef.current, {
         width: '100%',
-        duration: 1,
+        duration: 0.5,
       });
     });
 
@@ -66,7 +109,11 @@ export default function About() {
           'mx-section flex flex-col-reverse gap-4 sm:mt-[30vh]  sm:flex-row sm:items-center sm:justify-between lg:gap-8',
         )}
       >
-        <div className={cx('flex flex-col gap-4 sm:w-[60%] lg:w-[70%]')}>
+        <div
+          className={cx(
+            'flex flex-col justify-evenly gap-8 sm:h-[70vh] sm:w-[60%] lg:w-[70%]',
+          )}
+        >
           <div
             ref={headerAboutRef}
             className="w-0 border-b-[0.3rem] border-l-0 border-r-0 border-t-0 border-solid border-white"
@@ -89,7 +136,10 @@ export default function About() {
               <p>{t('title_description_sub_3')}</p>
             </SlideWrapper>
           </div>
-          <SlideWrapper ref={el => setRefAbout(el, '5')}>
+          <SlideWrapper
+            classNames="leading-extra-loose"
+            ref={el => setRefAbout(el, '5')}
+          >
             <Button
               title="Dowload Resume"
               type="secondary"
@@ -100,7 +150,7 @@ export default function About() {
         </div>
 
         <SlideWrapper ref={el => setRefAbout(el, '6')}>
-          <div className="my-auto flex w-full  justify-center">
+          <div className="my-auto  flex w-full  justify-center">
             <figure className=" relative  w-full overflow-hidden rounded-3xl pb-[172%] sm:w-[40vh]">
               <Image
                 fill

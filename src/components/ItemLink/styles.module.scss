@@ -50,3 +50,13 @@
   display: inline;
   width: auto;
 }
+
+.item_wrap:hover > .icon_arrow {
+  transform: rotate(45deg);
+  transition: all ease-in 0.2s;
+}
+.icon_arrow {
+  transform: rotate(0deg);
+
+  transition: all ease-in 0.2s;
+}

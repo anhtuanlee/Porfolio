@@ -17,6 +17,7 @@ interface ButtonProps {
 interface TitleSectionProps {
   title: string;
   titlesub?: string;
+  classNames?: string;
 }
 
 interface ItemServiceProps {
@@ -42,9 +43,8 @@ interface ItemLinkProps {
 interface IDataWorks {
   title: string;
   href: string;
-  type: string;
+  type?: string;
   thumbNail: StaticImageData;
-  listImgDetails: string[];
   isLastItem?: boolean;
   index?: number | null | undefined;
 }

@@ -13,8 +13,8 @@ export const useSmoothScroll = (): void => {
     useEffect(() => {
         refCog.current.lenis = new Lenis({
             wrapper: window,
-            duration: 2.5,
-            easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            duration: 1.2,
+            easing: t => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
             smoothTouch: true,
             touchMultiplier: 2,
             infinite: false,

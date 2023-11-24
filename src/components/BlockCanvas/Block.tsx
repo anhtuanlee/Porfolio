@@ -1,12 +1,10 @@
 import { config, listBlock } from '@/constant/data-block';
-import { useGlobalContext } from '@/context/store';
+import { useStore } from '@/context/stores';
 import { useRefs } from '@/hooks/useRefs';
 import { Float, MeshTransmissionMaterial } from '@react-three/drei';
-import { useFrame, useThree } from '@react-three/fiber';
-import gsap, { Circ, Power0, Power1, Power3, Power4 } from 'gsap';
-import { CustomEase } from 'gsap/all';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { useStore } from '@/context/stores';
+import { useThree } from '@react-three/fiber';
+import gsap, { Power4 } from 'gsap';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 
 export default function Block({ props }: any) {
   const containerRef = useRef<any>();
@@ -108,7 +106,6 @@ export default function Block({ props }: any) {
         {listBlock.map((item: any, index: number) => {
           return (
             <mesh
-              onPointerEnter={e => console.log(e)}
               key={index}
               ref={element => setRef(element, `${index}`)}
               scale={0.95}

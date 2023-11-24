@@ -28,7 +28,6 @@ export default function Contact() {
     let ctx = gsap.context(() => {
       const tl = gsap.timeline();
       sectionContactRef.current = tl;
-      console.log(refs);
 
       refs.forEach((item, index) => {
         const itemChild = item?.children[0] as HTMLDivElement;
@@ -39,17 +38,17 @@ export default function Contact() {
             y: 0,
             opacity: 1,
             duration: 0.15,
-            delay: isOpenMenuHeader ? 0 : 1,
+            delay: isOpenMenuHeader ? 0 : 0.5,
             autoAlpha: 1,
             ease: 'Expo.easeInOut',
-            stagger: { amount: 0.5 },
+            stagger: { amount: 0.3 },
           },
-          isOpenMenuHeader ? 0 : 1,
+          isOpenMenuHeader ? 0 : 0.3,
         ).reverse();
       });
       tl.to(headerContactRef.current, {
         width: '100%',
-        duration: 1,
+        duration: 0.5,
       });
     });
 

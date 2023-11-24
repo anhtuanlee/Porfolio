@@ -1,22 +1,14 @@
 'use client';
 import { useLocale } from 'next-intl';
 
-import { useGlobalContext } from '@/context/store';
-import classNames from 'classnames/bind';
-import gsap from 'gsap';
-import Link from 'next-intl/link';
-import { useSelectedLayoutSegment } from 'next/navigation';
-import {
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  forwardRef,
-  useImperativeHandle,
-} from 'react';
-import styles from './Nav.module.scss';
 import Framer from '@/components/Framer/Framer';
 import { useStore } from '@/context/stores';
 import { useRefs } from '@/hooks/useRefs';
+import classNames from 'classnames/bind';
+import gsap from 'gsap';
+import { useSelectedLayoutSegment } from 'next/navigation';
+import { useEffect, useImperativeHandle, useLayoutEffect, useRef } from 'react';
+import styles from './Nav.module.scss';
 
 const cx = classNames.bind(styles);
 

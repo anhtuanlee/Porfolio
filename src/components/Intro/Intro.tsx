@@ -57,12 +57,11 @@ export default function Intro() {
             amount: 0.5,
           },
         });
-        if (isMobile) {
-          gsap.to(item, {
-            fill: dataText ? '#fff' : 'transparent',
-            delay: 4,
-          });
-        }
+        gsap.to(item, {
+          fill: dataText ? '#fff' : 'transparent',
+          delay: 3.5,
+          duration: 0.5,
+        });
       }
     });
     gsap.to(couterRef.current, {
@@ -70,10 +69,7 @@ export default function Intro() {
       duration: 0.5,
       opacity: 0,
     });
-    gsap.set(introTextRef.current, {
-      fill: '#fff',
-      delay: 4,
-    });
+
     gsap.to(introTextRef.current, {
       scale: isMobile ? 0.8 : 0.5,
       duration: 0.4,
