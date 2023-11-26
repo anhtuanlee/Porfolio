@@ -12,8 +12,7 @@ const cx = classNames.bind(styles);
 
 const Header = forwardRef<any, any>((props, ref) => {
   const [isScrolHeader, setIsScrollHeader] = useState<boolean>(false);
-  const { setIdCursorHover } = useStore();
-
+  const { setIdCursorHover, setIsOpenMenuHeader } = useStore();
   const handleWindowScroll = (e: Event) => {
     if (window.scrollY > 133) {
       setIsScrollHeader(true);
@@ -38,11 +37,9 @@ const Header = forwardRef<any, any>((props, ref) => {
         className="flex flex-row items-center justify-center gap-2 "
         onMouseEnter={() => setIdCursorHover('icon')}
         onMouseLeave={() => setIdCursorHover(null)}
+        onClick={() => setIsOpenMenuHeader(false)}
       >
-        <span>
-          <IconsLogo />
-        </span>
-
+        <IconsLogo />
         <h4 className="font-sans font-semibold text-white">Venn</h4>
       </Link>
       <NavRight forwardRef={ref} />

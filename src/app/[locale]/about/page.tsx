@@ -16,48 +16,6 @@ import { Metadata } from 'next';
 
 const cx = classNames.bind(styles);
 
-export const metadata: Metadata = {
-  title: 'About',
-  keywords: [
-    'Next.js',
-    'React',
-    'JavaScript',
-    'Venn',
-    'Le Anh Tuan',
-    'Portfolio',
-  ],
-  authors: [
-    { name: 'Le Anh Tuan' },
-    { name: 'Venn', url: 'https://nextjs.org' },
-  ],
-  creator: 'Venn',
-  publisher: 'Venn ',
-  applicationName: 'Portfolio',
-  openGraph: {
-    title: 'Blog',
-    images: [
-      {
-        url: '/access/images/img_portfolio_1.png',
-        width: 800,
-        height: 600,
-        alt: 'My Portfolio',
-      },
-    ],
-  },
-  robots: {
-    index: false,
-    follow: true,
-    nocache: true,
-    googleBot: {
-      index: true,
-      follow: false,
-      noimageindex: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-};
 export default function About() {
   const t = useTranslations('About');
 

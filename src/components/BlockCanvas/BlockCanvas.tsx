@@ -23,13 +23,8 @@ export default function BlockCanvas() {
     <div className={'fixed inset-0'}>
       <Canvas
         flat
-        // linear
         shadows
         gl={{ antialias: false }}
-        // onCreated={state => {
-        //   state.gl.toneMapping = THREE.NoToneMapping;
-        // }}
-
         camera={{
           position: [
             isMobile ? 15 : 10,
@@ -37,7 +32,6 @@ export default function BlockCanvas() {
             isMobile ? 15 : 10,
           ],
           fov: 50,
-          // aspect: window.innerWidth / window.innerHeight,
           near: 0.1,
           far: 2000,
         }}

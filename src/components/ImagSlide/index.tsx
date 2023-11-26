@@ -3,15 +3,16 @@
 import Image from 'next/image';
 import styles from './styles.module.scss';
 import classNames from 'classnames/bind';
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useStore } from '@/context/stores';
+import imgDefault from '../../../public/access/images/default-img.jpg';
 
 const cx = classNames.bind(styles);
 export default function ImageSlide({ href, alt }: TImageSlide) {
   const refImg = useRef<HTMLDivElement>(null);
   const { isHoverImg } = useStore();
-
+  const [imgSrc, setImgSrc] = useState<string | undefined>(href);
   useLayoutEffect(() => {
     if (refImg.current) {
       const tl = gsap.timeline();
@@ -65,7 +66,7 @@ export default function ImageSlide({ href, alt }: TImageSlide) {
           objectFit="cover"
           className={cx('item_img', 'absolute w-auto')}
           alt={alt}
-          src={href ?? '/access/images/default-image.jpg'}
+          src={href ?? imgDefault}
         />
       </figure>
     </div>

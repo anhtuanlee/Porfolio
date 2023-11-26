@@ -1,5 +1,4 @@
 import { Layout } from '@/components/Layout/Layout';
-import '@/styles/global.scss';
 import '@/styles/index.scss';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
@@ -14,8 +13,8 @@ export const metadata: Metadata = {
   title: 'Portfolio',
   description: 'Venn Portfolio',
   icons: {
-    apple: [{ url: '/flat.ico', type: 'image/ico' }],
-    icon: [{ url: './flat.ico', type: 'image/ico' }],
+    apple: [{ url: '/access/icons/favicon.ico' }],
+    icon: [{ url: '/access/icons/favicon.ico' }],
   },
   keywords: [
     'Next.js',
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
   publisher: 'Venn ',
   applicationName: 'Portfolio',
   openGraph: {
-    title: 'Blog',
+    title: 'Portfolio Venn',
     images: [
       {
         url: '/access/images/img_portfolio_1.png',

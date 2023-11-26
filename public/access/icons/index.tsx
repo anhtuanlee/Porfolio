@@ -317,7 +317,6 @@ export const IntroText = forwardRef<any, any>(({ classNames }, ref) => {
 	return (
 		<svg
 			width='90%'
-			height='auto'
 			viewBox='0 0 542 67'
 			fill='none'
 			ref={ref}

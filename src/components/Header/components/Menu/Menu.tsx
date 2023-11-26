@@ -110,7 +110,7 @@ export default function Menu() {
                       onMouseOver={() => handleMouseOver(index + 1)}
                       onMouseLeave={() => handleMouseLeave(index)}
                       onClick={handleCloseMenu}
-                      className={`transition-all duration-300  ${
+                      className={`pr-20 transition-all duration-300 ${
                         idMenuHover === index + 1 ? 'font-reset' : ''
                       }`}
                     >

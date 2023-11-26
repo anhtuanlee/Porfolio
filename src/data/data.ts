@@ -40,7 +40,7 @@ export const DATA_PROJECTS = [
     {
         key: 'zing-mp3',
         title: 'Zing Mp3 Clone',
-        link: 'https//:anhtuan-music.vercel.app',
+        link: 'https://anhtuan-music.vercel.app',
         category: 'Web Development',
         type: 'Personal',
         technology: ['Javascript', 'SCSS', 'ReactJS', 'ReduxTookit'],
@@ -60,7 +60,7 @@ export const DATA_PROJECTS = [
     {
         key: 'portfolio',
         title: 'Portfolio',
-        link: 'https//:portfolio-anhtuanlee.vercel.app',
+        link: 'https://portfolio-anhtuanlee.vercel.app',
         category: 'Web Creative',
         type: 'Personal',
         technology: [

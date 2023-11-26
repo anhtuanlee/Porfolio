@@ -5,7 +5,10 @@ declare global {
         initial: 'initial' | 'final' | 'spring';
         // any other thing
     };
-
+    type TContainerLayout = {
+        children: ReactNode;
+        classNames?: string;
+    };
     type TFramer = {
         children: React.ReactNode;
         isActive?: boolean;
@@ -16,7 +19,13 @@ declare global {
         icon: () => JSX.Element;
         id: number;
     }[];
-    type TInputIdCursor = 'hero' | 'link' | 'icon' | number | null;
+    type TInputIdCursor =
+        | 'hero'
+        | 'link'
+        | 'icon'
+        | number
+        | null
+        | `text${number}`;
 
     type TIdCursorHover = {
         idCursorHover: null;

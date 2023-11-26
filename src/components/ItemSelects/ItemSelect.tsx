@@ -36,6 +36,7 @@ export default function ItemSelects({
       <div
         onMouseEnter={() => handleHover()}
         onMouseLeave={() => handleLeave()}
+        onClick={() => handleLeave()}
         className={cx(
           `mt-8  flex w-full flex-row items-center justify-between pb-8 md:mt-12 md:pb-12 lg:px-8 lg:pb-12`,
           'item_select_work',

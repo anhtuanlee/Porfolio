@@ -15,6 +15,7 @@ import gsap, { Expo } from 'gsap';
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 import { ScrollTrigger } from 'gsap/all';
 import { ScrollToPlugin } from 'gsap/all';
+import Link from 'next/link';
 const cx = classNames.bind(styles);
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -22,6 +23,7 @@ ScrollTrigger.normalizeScroll(true);
 export default function Page() {
   const { key } = useParams();
   const workRef = useRef<any>();
+  const filterRef = useRef<HTMLDivElement>(null);
   const projectRef = useRef<HTMLDivElement>(null);
   const { refsByKey: refWork, setRef: setRefWork } = useRefs();
   const { refsByKey: refScrollStrigger, setRef: setRefScrollStrigger } =
@@ -124,6 +126,33 @@ export default function Page() {
         width: '100%',
         duration: 1,
       });
+
+      if (data.thumbnail && !isOpenMenuHeader) {
+        gsap.fromTo(
+          filterRef.current,
+          {
+            opacity: 0,
+          },
+          {
+            duration: 0.5,
+            opacity: 1,
+          },
+        );
+      }
+      gsap.to(filterRef.current, {
+        display: data.thumbnail && !isOpenMenuHeader ? 'block' : 'none',
+        duration: 0.5,
+        delay: 1,
+      });
+      gsap.to(filterRef.current, {
+        background:
+          data.thumbnail && !isOpenMenuHeader
+            ? `url(${data?.thumbnail}) center center / cover no-repeat`
+            : 'transparent',
+        filter: data.thumbnail && !isOpenMenuHeader ? 'blur(40px)' : undefined,
+        duration: 0.5,
+        ease: 'expo.out',
+      });
     });
 
     return () => ctx.revert();
@@ -135,6 +164,7 @@ export default function Page() {
 
   return (
     <Container>
+      <div className="fixed inset-[0] -z-10" ref={filterRef}></div>
       <div className="h-full w-full p-8 ">
         <SlideWrapper ref={el => setRefWork(el, '0')}>
           <div className="flex w-full justify-center ">
@@ -143,6 +173,7 @@ export default function Page() {
                 loading="lazy"
                 fill
                 layout="fill"
+                decoding="async"
                 objectFit="cover"
                 className={cx('item_img', 'absolute w-auto')}
                 alt={data.key}
@@ -171,7 +202,10 @@ export default function Page() {
         <SlideWrapper ref={el => setRefWork(el, '3')}>
           <div className="mt-20">
             <h5>Visit: </h5>
-            <span
+            <Link
+              href={data.link}
+              replace
+              target="_blank"
               onMouseEnter={() => setIdCursorHover('link')}
               onMouseLeave={() => setIdCursorHover(null)}
               className={cx(
@@ -180,7 +214,7 @@ export default function Page() {
               )}
             >
               {data.link}
-            </span>
+            </Link>
           </div>
         </SlideWrapper>
         <SlideWrapper ref={el => setRefWork(el, '4')}>

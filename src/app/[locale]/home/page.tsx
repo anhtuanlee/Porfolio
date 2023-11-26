@@ -28,12 +28,6 @@ export default function Home() {
       const tl = gsap.timeline();
       menuRef.current = tl;
 
-      // tl.to(textHeroRef.current, {
-      //   width: '100%',
-      //   duration: 3,
-      //   delay: 3.5,
-      //   ease: 'power4.inOut',
-      // });
       refs.forEach(item => {
         const itemChild = item?.children[0] as HTMLDivElement;
         tl.to(

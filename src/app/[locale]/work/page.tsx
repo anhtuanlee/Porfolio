@@ -61,7 +61,7 @@ export default function Work() {
       <div className="mx-[1rem] mt-[30vh] sm:mx-[section]  ">
         <div className="lg:flex lg:h-[65vh] lg:flex-row lg:justify-between lg:gap-10">
           <section className="hidden lg:flex lg:h-full lg:w-1/2 lg:items-center lg:justify-center">
-            {<ImageSlide href={data?.path} alt={data?.title ?? 'img'} />}
+            <ImageSlide href={data?.path} alt={data?.title ?? ''} />
           </section>
           <div className="w-full flex-shrink-0 lg:w-1/2">
             <div
