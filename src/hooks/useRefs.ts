@@ -1,4 +1,3 @@
-import { MeshLineGeometry } from '@react-three/drei';
 import { useRef } from 'react';
 import { Mesh } from 'three';
 
